@@ -1,14 +1,9 @@
-import styled from '@emotion/styled';
-
-const AppContainer = styled.div`
-  width: 400px;
-  margin: 0 auto;
-  border: 1px solid;
-`;
-
 const App = () => {
   return (
-    <div>Hello App</div>
+    <>
+      <div>화폐 포맷팅</div>
+      <input type="text" placeholder="화폐 숫자를 넣어주세요" />
+    </>
   );
 };
 
