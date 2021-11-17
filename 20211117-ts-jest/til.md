@@ -4,7 +4,8 @@
 
 ### input.value에서 오류가 발생할 때 해결하는 방법
 
-- 라이브러리 내에서 `getByPlaceholerText`의 리턴타입이 `HTMLElement`로 정해져 있으므로 직접 `HTMLInputElement`로 타입 별칭을 정한다
+- 문제의 원인은 라이브러리 내에서 `getByPlaceholerText`의 리턴 타입이 `HTMLElement`로 정해져 있으므로 value 속성을 사용할 수 없다는 오류가 발생한 것이다.
+- 따라서 해결하려면 직접 `HTMLInputElement`로 타입 별칭을 정한다
 
 ```tsx
 // Better
@@ -50,22 +51,20 @@ const result = formatArray
 const blocks = [3, 4, 4];
 const delimiter = ["-"];
 
-const format = (value: string): string => {
+const format = (value: string): => {
   const result = [];
 
   let inputValue = value;
 
   blocks.forEach((block) => {
-    result.push(inputValue.substr(0, block));
-    inputValue = inputValue.substr(block);
+    result.push(inputValue.substr(0, block)); // 처음부터 block 개수만큼 잘라서 result에 추가한다.
+    inputValue = inputValue.substr(block); // block 이후의 문자열만 남긴다.
   });
 
   return result.join(delimiter);
 };
 
-/* 장점
-- 문자열을 substr로 자를 때 start 인덱스에 대해서 생각을 안해도 됨
-*/
+// 장점: 문자열을 substr로 자를 때 start 인덱스에 대해서 생각을 안해도 됨
 ```
 
 ### `handleChange = useCallback` 최적화
