@@ -1,6 +1,6 @@
 import { ChangeEvent, useCallback, useState } from "react";
 
-interface CurrencyFormatInputProps {
+interface CardNumberFormatInputProps {
   blocks: number[];
   delimiter: string;
 }
@@ -13,10 +13,10 @@ interface CurrencyFormatInputProps {
 000 delmiter 0000 delmiter 0000
 */
 
-const CurrencyFormatInput = ({
+const CardNumberFormatInput = ({
   blocks,
   delimiter,
-}: CurrencyFormatInputProps) => {
+}: CardNumberFormatInputProps) => {
   const [content, setContent] = useState("");
 
   const formatValue = (value: string) => {
@@ -51,4 +51,4 @@ const CurrencyFormatInput = ({
   );
 };
 
-export default CurrencyFormatInput;
+export default CardNumberFormatInput;
